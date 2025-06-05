@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>ESP32 Oscilloscope Test Board Pinout &amp; Signal Description</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="esp32-oscilloscope-test-board-pinout--signal-description">ESP32 Oscilloscope Test Board Pinout &amp; Signal Description</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>Pin (GPIO)</strong></th>
+<th style="text-align:left"><strong>Function</strong></th>
+<th style="text-align:center"><strong>Direction</strong></th>
+<th style="text-align:left"><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">21</td>
+<td style="text-align:left">LED1 / I2C SDA</td>
+<td style="text-align:center">Output</td>
+<td style="text-align:left">LED1 toggled at 1000ms interval, I2C SDA for OLED (0x3C)</td>
+</tr>
+<tr>
+<td style="text-align:center">22</td>
+<td style="text-align:left">LED2 / I2C SCL</td>
+<td style="text-align:center">Output</td>
+<td style="text-align:left">LED2 toggled at 330ms interval, I2C SCL for OLED (0x3C)</td>
+</tr>
+<tr>
+<td style="text-align:center">23</td>
+<td style="text-align:left">LED3</td>
+<td style="text-align:center">Output</td>
+<td style="text-align:left">LED3 toggled at 50ms interval</td>
+</tr>
+<tr>
+<td style="text-align:center">32</td>
+<td style="text-align:left">PWM1</td>
+<td style="text-align:center">Output</td>
+<td style="text-align:left">PWM, 1kHz, 25% duty cycle</td>
+</tr>
+<tr>
+<td style="text-align:center">33</td>
+<td style="text-align:left">PWM2</td>
+<td style="text-align:center">Output</td>
+<td style="text-align:left">PWM, 1kHz, 50% duty cycle</td>
+</tr>
+<tr>
+<td style="text-align:center">25</td>
+<td style="text-align:left">PWM3</td>
+<td style="text-align:center">Output</td>
+<td style="text-align:left">PWM, 1kHz, 75% duty cycle</td>
+</tr>
+<tr>
+<td style="text-align:center">13</td>
+<td style="text-align:left">Button</td>
+<td style="text-align:center">Input</td>
+<td style="text-align:left">Button input, active low, measures press duration</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:left">UART1 TX</td>
+<td style="text-align:center">Output</td>
+<td style="text-align:left">Serial output, <strong>115200 baud</strong>, sends button press duration</td>
+</tr>
+<tr>
+<td style="text-align:center">18</td>
+<td style="text-align:left">UART2 TX</td>
+<td style="text-align:center">Output</td>
+<td style="text-align:left">Serial output, <strong>9600 baud</strong>, sends &quot;Hello, World!&quot; every 2s</td>
+</tr>
+<tr>
+<td style="text-align:center">21</td>
+<td style="text-align:left">I2C SDA (OLED)</td>
+<td style="text-align:center">Output</td>
+<td style="text-align:left">Shared with LED1, OLED SSD1306, address 0x3C</td>
+</tr>
+<tr>
+<td style="text-align:center">22</td>
+<td style="text-align:left">I2C SCL (OLED)</td>
+<td style="text-align:center">Output</td>
+<td style="text-align:left">Shared with LED2, OLED SSD1306, address 0x3C</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="baud-rate-settings"><strong>Baud Rate Settings</strong></h2>
+<ul>
+<li><strong>UART1 (TX on GPIO 5):</strong> 115200 baud<br>
+<em>Sends button press duration as text (e.g., &quot;123 ms\r\n&quot;)</em></li>
+<li><strong>UART2 (TX on GPIO 18):</strong> 9600 baud<br>
+<em>Sends &quot;Hello, World!&quot; every 2 seconds</em></li>
+</ul>
+<hr>
+<h2 id="for-oscilloscopelogic-analyzer-study"><strong>For Oscilloscope/Logic Analyzer Study</strong></h2>
+<ul>
+<li><strong>LED Pins (21, 22, 23):</strong> Observe digital toggling at different intervals.</li>
+<li><strong>PWM Pins (32, 33, 25):</strong> Observe PWM waveforms at 1kHz with 25%, 50%, and 75% duty cycles.</li>
+<li><strong>UART Pins (5, 18):</strong> Capture serial data at specified baud rates.</li>
+<li><strong>Button Pin (13):</strong> Use as a digital input, observe debounce and timing.</li>
+<li><strong>I2C Pins (21, 22):</strong> Observe I2C communication with OLED (address 0x3C).</li>
+</ul>
+<hr>
+<h2 id="note-for-students"><strong>Note for Students</strong></h2>
+<ul>
+<li>Use a logic analyzer to capture UART, PWM, and I2C signals.</li>
+<li>Use an oscilloscope to measure PWM duty cycles and LED blink intervals.</li>
+<li>Ensure your serial terminal matches the correct baud rate for each UART output.</li>
+</ul>
+<hr>
+
+            
+            
+        </body>
+        </html>
